@@ -11,12 +11,11 @@ public class TilePieceSet {
 	public TilePieceSet(TilePiece tilePiece, int setCount) {
 		this.tilepiece = tilePiece;
 		this.setCount = setCount;
-
+		tilePieces = new ArrayList<TilePiece>();
 		for (int i = 0; i < setCount; i++){
 			try {
 				tilePieces.add((TilePiece) tilePiece.clone());
 			} catch (CloneNotSupportedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
