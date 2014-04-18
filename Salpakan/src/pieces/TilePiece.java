@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author Reggie Senal
  *
  */
-public class TilePiece implements Comparable<TilePiece>, TileContest{
+public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable{
 	
 	private String name = "noname";
 	private int value = 0;
@@ -21,7 +21,7 @@ public class TilePiece implements Comparable<TilePiece>, TileContest{
 		this.value = value;
 		this.p = new Position();
 		this.isActive = true;
-		this.lesserRanks = lesserRanks;
+		this.setLesserRanks(lesserRanks);
 	}
 	public String getName() {
 		return name;
@@ -58,5 +58,16 @@ public class TilePiece implements Comparable<TilePiece>, TileContest{
 
 	private void setActive(boolean isActive) {
 		this.isActive = isActive;
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		return super.clone();
+	}
+	public ArrayList<Integer> getLesserRanks() {
+		return lesserRanks;
+	}
+	public void setLesserRanks(ArrayList<Integer> lesserRanks) {
+		this.lesserRanks = lesserRanks;
 	}
 }

@@ -1,0 +1,1 @@
+Isang simpleng laro ng Salpakan (Game of the General).

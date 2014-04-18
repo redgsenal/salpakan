@@ -164,6 +164,38 @@ public final class Constant {
 	public static TilePiece PRIVATE = new TilePiece("Private", PRIVATE_VALUE, PRIVATE_LESSER_RANKS);
 	public static TilePiece SPY = new TilePiece("Spy", SPY_VALUE, SPY_LESSER_RANKS);
 	
-	//Spublic static ArrayList<TilePiece> TILE_PIECES = new ArrayList<TilePiece>(Arrays.asList("Buenos Aires", "Córdoba", "La Plata")));
-
+	public static TilePieceSet FLAG_SET = new TilePieceSet(FLAG, 1);
+	public static TilePieceSet FIVE_STAR_GENERAL_SET = new TilePieceSet(FIVE_STAR_GENERAL, 1);
+	public static TilePieceSet FOUR_STAR_GENERAL_SET = new TilePieceSet(FOUR_STAR_GENERAL, 1);
+	public static TilePieceSet LIEUTENANT_GENERAL_SET = new TilePieceSet(LIEUTENANT_GENERAL, 1);
+	public static TilePieceSet MAJOR_GENERAL_SET = new TilePieceSet(MAJOR_GENERAL, 1);
+	public static TilePieceSet BRIGADIER_GENERAL_SET = new TilePieceSet(BRIGADIER_GENERAL, 1);
+	public static TilePieceSet COLONEL_SET = new TilePieceSet(COLONEL, 1);
+	public static TilePieceSet LIEUTENANT_COLONEL_SET = new TilePieceSet(LIEUTENANT_COLONEL, 1);
+	public static TilePieceSet MAJOR_SET = new TilePieceSet(MAJOR, 1);
+	public static TilePieceSet CAPTAIN_SET = new TilePieceSet(CAPTAIN, 1);
+	public static TilePieceSet FIRST_LIEUTENANT_SET = new TilePieceSet(FIRST_LIEUTENANT, 1);
+	public static TilePieceSet SECOND_LIEUTENANT_SET = new TilePieceSet(SECOND_LIEUTENANT, 1);
+	public static TilePieceSet SERGENT_SET = new TilePieceSet(SERGENT, 1);
+	public static TilePieceSet PRIVATE_SET = new TilePieceSet(PRIVATE, 6);
+	public static TilePieceSet SPY_SET = new TilePieceSet(SPY, 2);
+	
+	public static ArrayList<TilePieceSet> TILE_PIECES = new ArrayList<TilePieceSet>(Arrays.asList(
+			FLAG_SET,
+			FIVE_STAR_GENERAL_SET,
+			FOUR_STAR_GENERAL_SET,
+			LIEUTENANT_GENERAL_SET,
+			MAJOR_GENERAL_SET,
+			BRIGADIER_GENERAL_SET,
+			COLONEL_SET,
+			LIEUTENANT_COLONEL_SET,
+			MAJOR_SET,
+			CAPTAIN_SET,
+			FIRST_LIEUTENANT_SET,
+			SECOND_LIEUTENANT_SET,
+			SERGENT_SET,
+			PRIVATE_SET,
+			SPY_SET
+		)
+	);
 }
