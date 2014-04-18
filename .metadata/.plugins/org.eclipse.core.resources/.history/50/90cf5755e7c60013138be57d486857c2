@@ -1,6 +1,0 @@
-package pieces;
-
-public interface TileContest {
-	void challenge(Tile opponent);
-	void topple();
-}
