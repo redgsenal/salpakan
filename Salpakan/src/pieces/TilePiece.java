@@ -50,13 +50,13 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 
 	@Override
 	public TilePiece getWinner(TilePiece opponent) {
-		if (this.getValue() == opponent.getValue()){
+		if (this.getValue() == opponent.getValue()) {
 			this.topple();
 			opponent.topple();
 			return null;
 		}
-			
-		if (this.getLesserRanks().contains(opponent)) {
+
+		if (this.getLesserRanks().contains(opponent.getValue())) {
 			opponent.topple();
 			return this;
 		}

@@ -7,21 +7,21 @@ public final class Constant {
 	
 	
 	// rank values
-	public static final int FLAG_VALUE = 1;
-	public static final int FIVE_STAR_GENERAL_VALUE = 15;
-	public static final int FOUR_STAR_GENERAL_VALUE = 14;
-	public static final int LIEUTENANT_GENERAL_VALUE = 13;
-	public static final int MAJOR_GENERAL_VALUE = 12;
-	public static final int BRIGADIER_GENERAL_VALUE = 11;
-	public static final int COLONEL_VALUE = 10;
-	public static final int LIEUTENANT_COLONEL_VALUE = 9;
-	public static final int MAJOR_VALUE = 8;
-	public static final int CAPTAIN_VALUE = 7;
-	public static final int FIRST_LIEUTENANT_VALUE = 6;
-	public static final int SECOND_LIEUTENANT_VALUE = 5;
-	public static final int SERGENT_VALUE = 4;
-	public static final int PRIVATE_VALUE = 3;
-	public static final int SPY_VALUE = 2;
+	public static final int FLAG_VALUE = 0x001;
+	public static final int FIVE_STAR_GENERAL_VALUE = 0x00F;
+	public static final int FOUR_STAR_GENERAL_VALUE = 0x00E;
+	public static final int LIEUTENANT_GENERAL_VALUE = 0x00D;
+	public static final int MAJOR_GENERAL_VALUE = 0x00C;
+	public static final int BRIGADIER_GENERAL_VALUE = 0x00B;
+	public static final int COLONEL_VALUE = 0x00A;
+	public static final int LIEUTENANT_COLONEL_VALUE = 0x009;
+	public static final int MAJOR_VALUE = 0x008;
+	public static final int CAPTAIN_VALUE = 0x007;
+	public static final int FIRST_LIEUTENANT_VALUE = 0x006;
+	public static final int SECOND_LIEUTENANT_VALUE = 0x005;
+	public static final int SERGENT_VALUE = 0x004;
+	public static final int PRIVATE_VALUE = 0x003;
+	public static final int SPY_VALUE = 0x002;
 	
 	// rank order
 	public static final ArrayList<Integer> FLAG_LESSER_RANKS = new ArrayList<Integer>();

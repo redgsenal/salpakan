@@ -12,8 +12,8 @@ public class LogicTest {
 
 	@Test
 	public void test() {
-		TilePiece winner =  Constant.LIEUTENANT_COLONEL.getWinner(Constant.SECOND_LIEUTENANT);
+		TilePiece winner =  Constant.SPY.getWinner(Constant.PRIVATE);
 		X.log(winner);
-		assertTrue("check tile value", winner == Constant.SECOND_LIEUTENANT);
+		assertTrue("check tile value", winner == Constant.SPY);
 	}
 }
