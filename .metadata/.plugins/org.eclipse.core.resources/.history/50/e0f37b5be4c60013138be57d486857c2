@@ -1,0 +1,21 @@
+package pieces;
+
+/**
+ * Coordinate relative to the board
+ * 
+ * @author Reggie
+ * 
+ */
+public class Position {
+
+	private int x = 0;
+	private int y = 0;
+	public Position() {
+		this.x = 0;
+		this.y = 0;
+	}
+	
+	public Position(int x, int y){
+		
+	}
+}

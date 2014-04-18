@@ -1,0 +1,18 @@
+package pieces;
+
+import java.util.ArrayList;
+
+public final class Constant {
+	
+	
+	public static final int FLAG_VALUE = 1;
+	public static final int GENERAL_5STAR_VALUE = 10;
+	public static final int GENERAL_4STAR_VALUE = 10;
+	public static final int LIEUTENANT_GENERAL = 9;
+	public static final int Major_General = 8;
+	
+	public static TilePiece FLAG = new TilePiece("Flag", 1);
+	
+	public static ArrayList<TilePiece> TILE_PIECES = new ArrayList<TilePiece>(Arrays.asList("Buenos Aires", "Córdoba", "La Plata")));
+
+}

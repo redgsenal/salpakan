@@ -1,0 +1,9 @@
+package pieces;
+
+import java.util.ArrayList;
+
+public class Constant {
+	
+	public static ArrayList<TilePiece> TILE_PIECES = new ArrayList<TilePiece>()
+
+}

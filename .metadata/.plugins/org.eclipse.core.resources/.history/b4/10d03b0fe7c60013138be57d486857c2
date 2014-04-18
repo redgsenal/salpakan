@@ -1,0 +1,55 @@
+package pieces;
+
+/**
+ * Tile
+ * holds the information about the tile and its value
+ * @author Reggie Senal
+ *
+ */
+public class Tile implements Comparable<Tile>, TileContest{
+	
+	private String name = "noname";
+	private int value = 0;
+	private Position p;
+	private boolean isActive = false;
+	
+	public Tile() {
+		p = new Position();
+	}
+	public String getName() {
+		return name;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public Position getPosition() {
+		return p;
+	}
+
+	@Override
+	public int compareTo(Tile o) {
+		if (this.value == o.value)
+			return 0;
+		return ((this.value > o.value) ? 1 : -1);
+	}
+
+	@Override
+	public void challenge(Tile opponent) {
+		setActive(this.value > opponent.value);		
+	}
+
+	@Override
+	public void topple() {
+		setActive(false);
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	private void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+}

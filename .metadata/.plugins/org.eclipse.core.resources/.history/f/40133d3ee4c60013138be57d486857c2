@@ -1,0 +1,14 @@
+package pieces;
+
+/**
+ * Coordinate relative to the board
+ * 
+ * @author Reggie
+ * 
+ */
+public class Position {
+
+	public Position() {
+		// TODO Auto-generated constructor stub
+	}
+}
