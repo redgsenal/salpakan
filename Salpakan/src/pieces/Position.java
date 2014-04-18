@@ -1,7 +1,5 @@
 package pieces;
 
-import com.sun.org.apache.bcel.internal.Constants;
-
 /**
  * Coordinate relative to the board
  * 
