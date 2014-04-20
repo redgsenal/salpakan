@@ -18,6 +18,7 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 	private boolean isActive = false;
 	private ArrayList<Integer> lesserRanks;
 	private Player player;
+	private boolean isCaptured;
 
 	public TilePiece(String name, int value, ArrayList<Integer> lesserRanks, Player p) throws InvalidBoardCoordinate, PositionOccupiedException{
 		this(name, value, lesserRanks);
@@ -44,7 +45,7 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 		}
 
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -129,4 +130,24 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
+
+	@Override
+	public boolean isCaptured() {		
+		return this.isCaptured;
+	}
+
+	@Override
+	public boolean isFlag() {
+		return this.getValue() == Constant.FLAG_VALUE;
+	}
+	
+	public boolean isFlagCaptured(){
+		return this.isFlag() && this.isCaptured;
+	}
+
+	public void capturePiece() {
+		this.isCaptured = true;
+	}
+	
+	
 }

@@ -1,11 +1,16 @@
 package game.board;
 
-import pieces.Position;
 import pieces.TilePiece;
+import game.player.Player;
 
 public interface Regulations {
 
-	public void clearing(Position p);
-	public void proclame(Position p, TilePiece piece);
-	public void occupy(Position p, TilePiece piece);
+	public void clearPositions();
+	public void switchTurn();
+	public void stepBack();
+	public boolean hasWinner();
+	public Player getWinner();
+	public void setMove();
+	public void removePiece(Player player, TilePiece piece);
+	
 }
