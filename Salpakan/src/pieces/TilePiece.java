@@ -1,6 +1,8 @@
 package pieces;
 
+import game.player.Player;
 import java.util.ArrayList;
+import utils.Constant;
 
 /**
  * Tile holds the information about the tile and its value
@@ -12,16 +14,35 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 
 	private String name = "noname";
 	private int value = 0;
-	private Position p;
+	private Position position;
 	private boolean isActive = false;
 	private ArrayList<Integer> lesserRanks;
+	private Player player;
+
+	public TilePiece(String name, int value, ArrayList<Integer> lesserRanks, Player p) throws InvalidBoardCoordinate, PositionOccupiedException{
+		this(name, value, lesserRanks);
+		this.player = p;
+	}
 
 	public TilePiece(String name, int value, ArrayList<Integer> lesserRanks) {
 		this.name = name;
 		this.value = value;
-		this.p = new Position();
 		this.isActive = true;
 		this.setLesserRanks(lesserRanks);
+		
+		try {
+			this.position = new Position();
+		} catch (InvalidBoardXCoordinate e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidBoardYCoordinate e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (PositionOccupiedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public String getName() {
@@ -33,7 +54,7 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 	}
 
 	public Position getPosition() {
-		return p;
+		return position;
 	}
 
 	@Override
@@ -49,8 +70,14 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 	}
 
 	@Override
-	public TilePiece getWinner(TilePiece opponent) {
+	public TilePiece getWinner(TilePiece opponent) {		
 		if (this.getValue() == opponent.getValue()) {
+			//if both are flags, challenger is the winner 
+			if (this.getValue() == Constant.FLAG_VALUE){
+				opponent.topple();
+				return this;
+			}
+			
 			this.topple();
 			opponent.topple();
 			return null;
@@ -93,5 +120,13 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 	@Override
 	public String toString() {
 		return "tile piece: " + this.name;
+	}
+
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 }

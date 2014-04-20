@@ -1,7 +1,14 @@
-package pieces;
+package utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import pieces.InvalidBoardXCoordinate;
+import pieces.InvalidBoardYCoordinate;
+import pieces.Position;
+import pieces.PositionOccupiedException;
+import pieces.TilePiece;
+import pieces.TilePieceSet;
 
 public final class Constant {
 	
@@ -145,9 +152,6 @@ public final class Constant {
 			SECOND_LIEUTENANT_VALUE,
 			SERGENT_VALUE));
 	
-	public static final int MAX_BOARD_X = 8;
-	public static final int MAX_BOARD_Y = 9;
-	
 	public static TilePiece FLAG = new TilePiece("Flag", FLAG_VALUE, FLAG_LESSER_RANKS);
 	public static TilePiece FIVE_STAR_GENERAL = new TilePiece("5 Star General", FIVE_STAR_GENERAL_VALUE, FIVE_STAR_GENERAL_LESSER_RANKS);
 	public static TilePiece FOUR_STAR_GENERAL = new TilePiece("4 Star General", FOUR_STAR_GENERAL_VALUE, FOUR_STAR_GENERAL_LESSER_RANKS);
@@ -198,4 +202,37 @@ public final class Constant {
 			SPY_SET
 		)
 	);
+	
+	public static ArrayList<TilePiece> initializePieces(){
+		ArrayList<TilePiece> tps = new ArrayList<>();
+		for(TilePieceSet setPieces : Constant.TILE_PIECES){
+			tps.addAll(setPieces.getTilePieces());
+		}
+		return tps;
+	}
+	
+	//board
+	public static final int MAX_BOARD_X = 9;
+	public static final int MAX_BOARD_Y = 8;
+	public static final int SQUARE_BOARD = MAX_BOARD_X * MAX_BOARD_Y;
+	
+	public static ArrayList<Position> initializePositions(){
+		ArrayList<Position> ps = new ArrayList<>();
+		for (int i = 0; i< SQUARE_BOARD; i++){
+			try {
+				ps.add(new Position());
+			} catch (InvalidBoardXCoordinate e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvalidBoardYCoordinate e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (PositionOccupiedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return ps;		
+	}
+
 }

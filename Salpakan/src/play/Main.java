@@ -2,9 +2,9 @@ package play;
 
 import java.util.ArrayList;
 
-import pieces.Constant;
 import pieces.TilePiece;
 import pieces.TilePieceSet;
+import utils.Constant;
 import utils.X;
 
 public class Main {

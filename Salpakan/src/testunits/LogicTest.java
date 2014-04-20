@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import pieces.Constant;
 import pieces.TilePiece;
+import utils.Constant;
 import utils.X;
 
 public class LogicTest {
