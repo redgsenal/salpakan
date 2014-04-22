@@ -5,14 +5,11 @@ import game.exceptions.PositionOccupiedException;
 import game.player.Player;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import pieces.Position;
 import pieces.TilePiece;
 import utils.Constant;
-import utils.X;
 
 public class Board implements Regulations {
 	private ArrayList<Position> positions = Constant.initializePositions();
@@ -94,23 +91,22 @@ public class Board implements Regulations {
 	}
 
 	@Override
-	public void initialPiecePlayerPosition(Player p, Map<Position, TilePiece> startingPositions) throws InvalidBoardCoordinate {
+	public void initialPiecePlayerPosition(Player p,
+			Map<Position, TilePiece> startingPositions)
+			throws InvalidBoardCoordinate, PositionOccupiedException {
 		ArrayList<Position> pos = p.initialPiecePositions(startingPositions);
 		for (Position position : pos) {
-			setTilePiecePosition(position.getTilePiece(), position.getX(), position.getY());
+			setTilePiecePosition(position.getTilePiece(), position.getX(),
+					position.getY());
 		}
 	}
 
 	@Override
-	public void setTilePiecePosition(TilePiece tilePiece, int x, int y) throws InvalidBoardCoordinate{
+	public void setTilePiecePosition(TilePiece tilePiece, int x, int y)
+			throws InvalidBoardCoordinate, PositionOccupiedException {
 		for (Position pos : positions) {
-			if (pos.getX() == x && pos.getY() == y){
-				try {
-					pos.setTilePiece(tilePiece);
-				} catch (PositionOccupiedException e) {
-					X.log("error setting tile piece in position");
-					e.printStackTrace();
-				}
+			if (pos.getX() == x && pos.getY() == y) {
+				pos.setTilePiece(tilePiece);
 			}
 		}
 	}
