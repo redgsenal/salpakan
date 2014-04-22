@@ -219,18 +219,20 @@ public final class Constant {
 	
 	public static ArrayList<Position> initializePositions(){
 		ArrayList<Position> ps = new ArrayList<>();
-		for (int i = 0; i< SQUARE_BOARD; i++){
-			try {
-				ps.add(new Position());
-			} catch (InvalidBoardXCoordinate e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvalidBoardYCoordinate e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (PositionOccupiedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		for (int x = 0; x < MAX_BOARD_X; x++){
+			for(int y = 0; y < MAX_BOARD_Y; y++){
+				try {
+					ps.add(new Position(x, y));
+				} catch (InvalidBoardXCoordinate e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvalidBoardYCoordinate e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (PositionOccupiedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 		return ps;		

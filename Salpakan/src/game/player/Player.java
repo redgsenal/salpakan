@@ -19,6 +19,9 @@ public class Player implements PlayerActions {
 	private boolean isTurn = false;
 	private static ArrayList<TilePiece> pieces = Constant.initializePieces();
 
+	public Player() {
+		this.name = "noname";
+	}
 	public Player(String name) {
 		this.name = name;
 	}
@@ -67,10 +70,11 @@ public class Player implements PlayerActions {
 			Entry<Position, TilePiece> nxt = itr.next();
 			TilePiece itemPiece = nxt.getValue();
 			Position pos = nxt.getKey();
+			pos.setPlayerObj(this);
 			if (pieces.contains(itemPiece)){
 				int indx = pieces.indexOf(itemPiece);
-				TilePiece playerPiece = pieces.get(indx);
-				try {
+				TilePiece playerPiece = pieces.get(indx);				
+				try {					
 					pos.setTilePiece(playerPiece);
 					positions.add(pos);
 				} catch (PositionOccupiedException e) {

@@ -17,8 +17,8 @@ public class Position implements Placement {
 
 	private int x;
 	private int y;
-	private Player playerObj;
-	private TilePiece tilePiece;
+	private Player playerObj = new Player("noname");
+	private TilePiece tilePiece = new TilePiece();
 
 	public Position() throws InvalidBoardXCoordinate, InvalidBoardYCoordinate, PositionOccupiedException {
 		setPosition(0, 0);
@@ -93,7 +93,7 @@ public class Position implements Placement {
 	}
 
 	public void setTilePiece(TilePiece tilePiece) throws PositionOccupiedException {
-		if (tilePiece != null)
+		if (this.tilePiece != null)
 			throw new PositionOccupiedException();
 		this.tilePiece = tilePiece;
 	}
@@ -116,5 +116,10 @@ public class Position implements Placement {
 	@Override
 	public TilePiece proclaim(TilePiece challenger, TilePiece defender) {
 		return challenger.getWinner(defender);
+	}
+	
+	@Override
+	public String toString() {		
+		return "Player : " + this.playerObj.getName() + " piece: " + this.tilePiece.toString() + " position (x, y): " + x + ", " + y;
 	}
 }

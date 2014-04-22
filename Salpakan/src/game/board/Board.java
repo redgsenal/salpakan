@@ -100,7 +100,7 @@ public class Board implements Regulations {
 					position.getY());
 		}
 	}
-
+	
 	@Override
 	public void setTilePiecePosition(TilePiece tilePiece, int x, int y)
 			throws InvalidBoardCoordinate, PositionOccupiedException {
@@ -109,5 +109,14 @@ public class Board implements Regulations {
 				pos.setTilePiece(tilePiece);
 			}
 		}
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("Board coordinates: ");
+		for (Position pos : positions) {
+			sb.append("\n").append(pos.toString());
+		}
+		return sb.toString();
 	}
 }
