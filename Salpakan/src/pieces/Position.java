@@ -2,6 +2,9 @@ package pieces;
 
 import utils.Constant;
 import utils.X;
+import game.exceptions.InvalidBoardXCoordinate;
+import game.exceptions.InvalidBoardYCoordinate;
+import game.exceptions.PositionOccupiedException;
 import game.player.Player;
 
 /**

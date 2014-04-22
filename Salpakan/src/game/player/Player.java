@@ -1,18 +1,24 @@
 package game.player;
 
-import java.util.ArrayList;
+import game.exceptions.PositionOccupiedException;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import pieces.Position;
 import pieces.TilePiece;
 import utils.Constant;
 
-public class Player {
+public class Player implements PlayerActions {
 
 	private String name;
 	private boolean isWinner = false;
 	private boolean isActive = false;
-	private boolean isTurn = false;	
-	private ArrayList<TilePiece> pieces = Constant.initializePieces();
-	
+	private boolean isTurn = false;
+	private static ArrayList<TilePiece> pieces = Constant.initializePieces();
+
 	public Player(String name) {
 		this.name = name;
 	}
@@ -53,7 +59,25 @@ public class Player {
 		return pieces;
 	}
 
-	public void setPieces(ArrayList<TilePiece> pieces) {
-		this.pieces = pieces;
+	@Override
+	public ArrayList<Position> initialPiecePositions(Map<Position, TilePiece> startingPositions) {
+		Iterator<Entry<Position, TilePiece>> itr = startingPositions.entrySet().iterator();
+		ArrayList<Position> positions = new ArrayList<Position>(); 
+		while(itr.hasNext()){
+			Entry<Position, TilePiece> nxt = itr.next();
+			TilePiece itemPiece = nxt.getValue();
+			Position pos = nxt.getKey();
+			if (pieces.contains(itemPiece)){
+				int indx = pieces.indexOf(itemPiece);
+				TilePiece playerPiece = pieces.get(indx);
+				try {
+					pos.setTilePiece(playerPiece);
+					positions.add(pos);
+				} catch (PositionOccupiedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return positions;
 	}
 }

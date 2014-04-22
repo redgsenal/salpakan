@@ -1,6 +1,10 @@
 package game.board;
 
+import java.util.Map;
+
+import pieces.Position;
 import pieces.TilePiece;
+import game.exceptions.InvalidBoardCoordinate;
 import game.player.Player;
 
 public interface Regulations {
@@ -12,5 +16,8 @@ public interface Regulations {
 	public Player getWinner();
 	public void setMove();
 	public void removePiece(Player player, TilePiece piece);
+	public void removePiece(Position position);
+	public void initialPiecePlayerPosition(Player p, Map<Position, TilePiece> startingPositions) throws InvalidBoardCoordinate;
+	void setTilePiecePosition(TilePiece tilePiece, int x, int y) throws InvalidBoardCoordinate;
 	
 }

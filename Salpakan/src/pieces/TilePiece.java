@@ -1,7 +1,13 @@
 package pieces;
 
+import game.exceptions.InvalidBoardCoordinate;
+import game.exceptions.InvalidBoardXCoordinate;
+import game.exceptions.InvalidBoardYCoordinate;
+import game.exceptions.PositionOccupiedException;
 import game.player.Player;
+
 import java.util.ArrayList;
+
 import utils.Constant;
 
 /**

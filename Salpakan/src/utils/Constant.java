@@ -1,12 +1,13 @@
 package utils;
 
+import game.exceptions.InvalidBoardXCoordinate;
+import game.exceptions.InvalidBoardYCoordinate;
+import game.exceptions.PositionOccupiedException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import pieces.InvalidBoardXCoordinate;
-import pieces.InvalidBoardYCoordinate;
 import pieces.Position;
-import pieces.PositionOccupiedException;
 import pieces.TilePiece;
 import pieces.TilePieceSet;
 

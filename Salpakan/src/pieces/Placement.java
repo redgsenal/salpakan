@@ -1,5 +1,6 @@
 package pieces;
 
+import game.exceptions.PositionOccupiedException;
 import game.player.Player;
 
 public interface Placement {
