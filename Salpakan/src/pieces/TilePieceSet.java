@@ -24,4 +24,25 @@ public class TilePieceSet {
 	public ArrayList<TilePiece> getTilePieces() {
 		return tilePieces;
 	}
+
+	public TilePiece getTilepiece() {
+		return tilepiece;
+	}
+
+	public void setTilepiece(TilePiece tilepiece) {
+		this.tilepiece = tilepiece;
+	}
+
+	public int getSetCount() {
+		return setCount;
+	}
+
+	public void setSetCount(int setCount) {
+		this.setCount = setCount;
+	}
+
+	public void setTilePieces(ArrayList<TilePiece> tilePieces) {
+		this.tilePieces = tilePieces;
+	}
+	
 }
