@@ -1,6 +1,7 @@
 package game.board;
 
 import game.exceptions.InvalidBoardCoordinate;
+import game.exceptions.InvalidPieceCountException;
 import game.exceptions.PositionOccupiedException;
 import game.player.Player;
 
@@ -12,7 +13,10 @@ import java.util.Map.Entry;
 
 import pieces.Position;
 import pieces.TilePiece;
+import pieces.TilePieceSet;
 import pieces.TilePosition;
+import utils.Constant;
+import utils.X;
 
 public class Board implements BoardActions {
 	// holds the piece and corresponding position to which player it belongs to
@@ -83,18 +87,30 @@ public class Board implements BoardActions {
 	}
 
 	@Override
-	public void initialPiecePlayerPosition(Player p, ArrayList<TilePosition> tilemap) throws InvalidBoardCoordinate, PositionOccupiedException {
+	public void initialPiecePlayerPosition(Player p, ArrayList<TilePosition> tilemap) throws InvalidBoardCoordinate, PositionOccupiedException, InvalidPieceCountException {
 		// just because its empty
 		if (tilemap.isEmpty())
 			return;
 
 		for (TilePosition tilePosition : tilemap) {
-			if (isPositionOccupied(tilePosition))
+			if (isPositionOccupied(tilePosition.getPosition()))
 				throw new PositionOccupiedException(tilePosition.getPosition());
+			if (isInvalidPieceCount(p, tilePosition.getPiece()))
+				throw new InvalidPieceCountException(tilePosition.getPiece());
 			tilePiecePlayerMap.put(tilePosition, p);
 		}		
 	}
 	
+	private boolean isInvalidPieceCount(Player player, TilePiece piece) {
+		// get piece count
+		for (TilePieceSet tps : Constant.TILE_PIECES){
+			int pieceCount = getPlayerPieceCount(player, tps.getTilepiece());
+			if (pieceCount > tps.getSetCount())
+				return true;
+		}
+		return false;
+	}
+
 	private boolean isPositionOccupied(TilePosition tilePosition){
 		return isPositionOccupied(tilePosition.getPosition());
 	}
@@ -110,6 +126,19 @@ public class Board implements BoardActions {
 			}
 		}			
 		return false;
+	}
+	
+	private int getPlayerPieceCount(Player player, TilePiece piece){
+		int count = 0;
+		if (!tilePiecePlayerMap.isEmpty()){
+			 ArrayList<TilePiece> pieces = getPlayerTilePieces(player);
+			 X.log(pieces);
+			 if (pieces.contains(piece)){
+				 X.log(player + " " + piece);				 
+				 count++;
+			 }
+		}
+		return count;
 	}
 	
 	public ArrayList<TilePiece> getPlayerTilePieces(Player p){

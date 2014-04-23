@@ -10,6 +10,7 @@ import game.board.Board;
 import game.exceptions.InvalidBoardCoordinate;
 import game.exceptions.InvalidBoardXCoordinate;
 import game.exceptions.InvalidBoardYCoordinate;
+import game.exceptions.InvalidPieceCountException;
 import game.exceptions.PositionOccupiedException;
 import game.player.Player;
 import utils.Constant;
@@ -31,6 +32,7 @@ public class Play {
 			tilemap2.add(new TilePosition(new Position(3, 6), Constant.LIEUTENANT_COLONEL));
 			tilemap2.add(new TilePosition(new Position(8, 2), Constant.MAJOR));
 			tilemap2.add(new TilePosition(new Position(4, 6), Constant.PRIVATE));
+			tilemap2.add(new TilePosition(new Position(1, 3), Constant.LIEUTENANT_COLONEL));
 
 			b.initialPiecePlayerPosition(p1, tilemap1);
 			b.initialPiecePlayerPosition(p2, tilemap2);
@@ -49,6 +51,9 @@ public class Play {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InvalidBoardYCoordinate e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvalidPieceCountException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

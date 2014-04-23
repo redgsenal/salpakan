@@ -160,7 +160,7 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 	public boolean equals(Object obj) {
 		if (obj instanceof TilePiece) {
 			TilePiece piece = (TilePiece) obj;
-			return (this.value == piece.getValue()); 			
+			return (this.value == piece.getValue());
 		}
 		return false;
 	}
