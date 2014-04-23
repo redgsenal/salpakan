@@ -80,8 +80,16 @@ public class Player implements PlayerActions {
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Player){
+			Player p = (Player) obj;
+			return p.getName().equalsIgnoreCase(this.name);
+		}
+		return false;
+	}
+	
+	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "Player: " + this.name;
 	}
 	

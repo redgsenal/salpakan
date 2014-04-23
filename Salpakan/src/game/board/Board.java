@@ -58,7 +58,7 @@ public class Board implements BoardActions {
 		return false;
 	}
 	
-	public Map<TilePosition, Player> getTilePiecePlayersMap() {
+	public Map<TilePosition, Player> getTilePiecesInMap() {
 		return tilePiecePlayerMap;
 	}
 
@@ -108,9 +108,23 @@ public class Board implements BoardActions {
 				if (mapitem.getPosition().equals(p))
 					return true;
 			}
-			
 		}			
 		return false;
+	}
+	
+	public ArrayList<TilePiece> getPlayerTilePieces(Player p){
+		ArrayList<TilePiece> tilePieces = new ArrayList<>();
+		if (!tilePiecePlayerMap.isEmpty()){
+			Iterator items = tilePiecePlayerMap.entrySet().iterator();
+			while(items.hasNext()){
+				Map.Entry<TilePosition, Player> item = (Entry<TilePosition, Player>) items.next();
+				if (item.getValue().equals(p)){
+					TilePosition mapitem = (TilePosition) item.getKey();
+					tilePieces.add(mapitem.getPiece());
+				}
+			}
+		}
+		return tilePieces;
 	}
 	
 	@Override
@@ -125,5 +139,6 @@ public class Board implements BoardActions {
 
 	@Override
 	public void clearPositions() {
+		tilePiecePlayerMap = new HashMap<TilePosition, Player> ();
 	}
 }
