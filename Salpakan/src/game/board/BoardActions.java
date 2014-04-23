@@ -8,7 +8,7 @@ import game.exceptions.InvalidBoardCoordinate;
 import game.exceptions.PositionOccupiedException;
 import game.player.Player;
 
-public interface Regulations {
+public interface BoardActions {
 
 	public void clearPositions();
 	public void switchTurn();

@@ -1,7 +1,6 @@
 package pieces;
 
 import utils.Constant;
-import utils.X;
 import game.exceptions.InvalidBoardXCoordinate;
 import game.exceptions.InvalidBoardYCoordinate;
 import game.exceptions.PositionOccupiedException;
@@ -13,12 +12,10 @@ import game.player.Player;
  * @author Reggie Senal
  * 
  */
-public class Position implements Placement {
+public class Position {
 
 	private int x;
-	private int y;
-	private Player playerObj = new Player("noname");
-	private TilePiece tilePiece = new TilePiece();
+	private int y;	
 
 	public Position() throws InvalidBoardXCoordinate, InvalidBoardYCoordinate, PositionOccupiedException {
 		setPosition(0, 0);
@@ -31,8 +28,6 @@ public class Position implements Placement {
 	public Position(int x, int y, Player p, TilePiece tilePiece) throws 
 							InvalidBoardXCoordinate, InvalidBoardYCoordinate, 
 							PositionOccupiedException {
-		this.playerObj = p;
-		this.setTilePiece(tilePiece);
 		setPosition(x, y);
 	}
 
@@ -69,57 +64,8 @@ public class Position implements Placement {
 		this.y = y;
 	}
 
-	public Player getPlayerObj() {
-		return playerObj;
-	}
-
-	public void setPlayerObj(Player playerObj) {
-		this.playerObj = playerObj;
-	}
-
-	@Override
-	public void clear() {
-		this.playerObj = null;
-		try {
-			this.setTilePiece(null);
-		} catch (PositionOccupiedException e) {
-			X.log("should not happen when clearing position");
-			e.printStackTrace();
-		}
-	}
-
-	public TilePiece getTilePiece() {
-		return tilePiece;
-	}
-
-	public void setTilePiece(TilePiece tilePiece) throws PositionOccupiedException {
-		if (this.tilePiece != null)
-			throw new PositionOccupiedException();
-		this.tilePiece = tilePiece;
-	}
-
-	@Override
-	public boolean isOccupied() {
-		return (this.playerObj != null && this.tilePiece != null);
-	}
-
-	@Override
-	public void occupy(Player player, TilePiece tilePiece) throws PositionOccupiedException {
-		if (isOccupied()){
-			throw new PositionOccupiedException();
-		}
-			
-		this.playerObj = player;
-		this.tilePiece = tilePiece;
-	}
-
-	@Override
-	public TilePiece proclaim(TilePiece challenger, TilePiece defender) {
-		return challenger.getWinner(defender);
-	}
-	
 	@Override
 	public String toString() {		
-		return "Player : " + this.playerObj.getName() + " piece: " + this.tilePiece.toString() + " position (x, y): " + x + ", " + y;
+		return "Position (x, y): " + x + ", " + y;
 	}
 }

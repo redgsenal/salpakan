@@ -23,7 +23,6 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 	private Position position;
 	private boolean isActive = false;
 	private ArrayList<Integer> lesserRanks;
-	private Player player = new Player();
 	private boolean isCaptured;
 	
 	public TilePiece() {
@@ -39,11 +38,6 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public TilePiece(String name, int value, ArrayList<Integer> lesserRanks, Player p) throws InvalidBoardCoordinate, PositionOccupiedException{
-		this(name, value, lesserRanks);
-		this.player = p;
 	}
 
 	public TilePiece(String name, int value, ArrayList<Integer> lesserRanks) {
@@ -144,14 +138,6 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 		return "tile piece: " + this.name;
 	}
 
-	public Player getPlayer() {
-		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-
 	@Override
 	public boolean isCaptured() {		
 		return this.isCaptured;
@@ -174,7 +160,7 @@ public class TilePiece implements Comparable<TilePiece>, TileContest, Cloneable 
 	public boolean equals(Object obj) {
 		if (obj instanceof TilePiece) {
 			TilePiece piece = (TilePiece) obj;
-			return (this.value == piece.getValue() && this.player == piece.player); 			
+			return (this.value == piece.getValue()); 			
 		}
 		return false;
 	}

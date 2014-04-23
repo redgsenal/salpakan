@@ -1,19 +1,13 @@
 package utils;
 
-import game.exceptions.InvalidBoardXCoordinate;
-import game.exceptions.InvalidBoardYCoordinate;
-import game.exceptions.PositionOccupiedException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import pieces.Position;
 import pieces.TilePiece;
 import pieces.TilePieceSet;
 
 public final class Constant {
-	
-	
 	// rank values
 	public static final int FLAG_VALUE = 0x001;
 	public static final int FIVE_STAR_GENERAL_VALUE = 0x00F;
@@ -204,38 +198,8 @@ public final class Constant {
 		)
 	);
 	
-	public static ArrayList<TilePiece> initializePieces(){
-		ArrayList<TilePiece> tps = new ArrayList<>();
-		for(TilePieceSet setPieces : Constant.TILE_PIECES){
-			tps.addAll(setPieces.getTilePieces());
-		}
-		return tps;
-	}
-	
 	//board
 	public static final int MAX_BOARD_X = 9;
 	public static final int MAX_BOARD_Y = 8;
 	public static final int SQUARE_BOARD = MAX_BOARD_X * MAX_BOARD_Y;
-	
-	public static ArrayList<Position> initializePositions(){
-		ArrayList<Position> ps = new ArrayList<>();
-		for (int x = 0; x < MAX_BOARD_X; x++){
-			for(int y = 0; y < MAX_BOARD_Y; y++){
-				try {
-					ps.add(new Position(x, y));
-				} catch (InvalidBoardXCoordinate e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InvalidBoardYCoordinate e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (PositionOccupiedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-		return ps;		
-	}
-
 }
