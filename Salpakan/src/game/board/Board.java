@@ -91,22 +91,25 @@ public class Board implements BoardActions {
 		// just because its empty
 		if (tilemap.isEmpty())
 			return;
-
+		
 		for (TilePosition tilePosition : tilemap) {
 			if (isPositionOccupied(tilePosition.getPosition()))
 				throw new PositionOccupiedException(tilePosition.getPosition());
 			if (isInvalidPieceCount(p, tilePosition.getPiece()))
 				throw new InvalidPieceCountException(tilePosition.getPiece());
 			tilePiecePlayerMap.put(tilePosition, p);
-		}		
+		}
 	}
 	
 	private boolean isInvalidPieceCount(Player player, TilePiece piece) {
 		// get piece count
-		for (TilePieceSet tps : Constant.TILE_PIECES){
-			int pieceCount = getPlayerPieceCount(player, tps.getTilepiece());
-			if (pieceCount > tps.getSetCount())
-				return true;
+		int pieceCount = getPlayerPieceCount(player, piece);
+		if (pieceCount > 0){
+			for (TilePieceSet tps : Constant.TILE_PIECES){
+				if (tps.getTilepiece().equals(piece)){					
+					return pieceCount > tps.getSetCount();
+				}				
+			}
 		}
 		return false;
 	}
@@ -129,13 +132,12 @@ public class Board implements BoardActions {
 	}
 	
 	private int getPlayerPieceCount(Player player, TilePiece piece){
-		int count = 0;
+		int count = 1;
 		if (!tilePiecePlayerMap.isEmpty()){
 			 ArrayList<TilePiece> pieces = getPlayerTilePieces(player);
-			 X.log(pieces);
-			 if (pieces.contains(piece)){
-				 X.log(player + " " + piece);				 
-				 count++;
+			 for(TilePiece tp : pieces){
+				 if (tp.equals(piece))
+					 count++;
 			 }
 		}
 		return count;
