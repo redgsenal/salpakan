@@ -95,13 +95,13 @@ public class Board implements BoardActions {
 		for (TilePosition tilePosition : tilemap) {
 			if (isPositionOccupied(tilePosition.getPosition()))
 				throw new PositionOccupiedException(tilePosition.getPosition());
-			if (isInvalidPieceCount(p, tilePosition.getPiece()))
+			if (hasExceedPieceCount(p, tilePosition.getPiece()))
 				throw new InvalidPieceCountException(tilePosition.getPiece());
 			tilePiecePlayerMap.put(tilePosition, p);
 		}
 	}
 	
-	private boolean isInvalidPieceCount(Player player, TilePiece piece) {
+	private boolean hasExceedPieceCount(Player player, TilePiece piece) {
 		// get piece count
 		int pieceCount = getPlayerPieceCount(player, piece);
 		if (pieceCount > 0){
