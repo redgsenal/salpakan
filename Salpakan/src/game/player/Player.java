@@ -61,7 +61,7 @@ public class Player implements PlayerActions {
 	}
 
 	public void initializeStartUpPieces() {
-		pieces = Utils.initializePieces();		
+		pieces = Utils.initializePieces();
 	}
 
 	@Override
@@ -78,4 +78,11 @@ public class Player implements PlayerActions {
 		}
 		return positions;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "Player: " + this.name;
+	}
+	
 }

@@ -66,6 +66,15 @@ public class Position {
 
 	@Override
 	public String toString() {		
-		return "Position (x, y): " + x + ", " + y;
+		return "Position (x, y): " + x + ", " + y + " ";
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Position){
+			Position p = (Position) obj;
+			return ((this.x == p.x) && (this.y == p.y));
+		}
+		return false;
 	}
 }

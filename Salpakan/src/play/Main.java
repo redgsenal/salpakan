@@ -17,35 +17,35 @@ import utils.Constant;
 public class Main {
 
 	public static void main(String[] args) {
-		Player p1 = new Player("Player1");
+		/*Player p1 = new Player("Player1");
 		Player p2 = new Player("Player2");
 		Board b = new Board(p1, p2);
-		Map<Position, TilePiece> mapperP1 = new HashMap<>();
+		HashMap<Position, TilePiece> mapperP1 = new HashMap<>();
 		try {
 			mapperP1.put(new Position(4, 6), Constant.FLAG);
 			mapperP1.put(new Position(2, 5), Constant.LIEUTENANT_COLONEL);
 			mapperP1.put(new Position(4, 2), Constant.FIRST_LIEUTENANT);
 			
-			/*ArrayList<Position> pos = p1.initialPiecePositions(mapperP1);
+			ArrayList<Position> pos = p1.initialPiecePositions(mapperP1);
 			X.log(pos.size());
 			for (Position position : pos) {
 				X.log(position.toString());
-			}*/
+			}
 			
-			Map<Position, TilePiece> mapperP2 = new HashMap<>();
+			HashMap<Position, TilePiece> mapperP2 = new HashMap<>();
 			mapperP2.put(new Position(4, 5), Constant.FLAG);
 			mapperP2.put(new Position(2, 2), Constant.LIEUTENANT_COLONEL);
 			mapperP2.put(new Position(4, 3), Constant.FIRST_LIEUTENANT);
-			/*ArrayList<Position> pos2 = p2.initialPiecePositions(mapperP2);
+			ArrayList<Position> pos2 = p2.initialPiecePositions(mapperP2);
 			for (Position position : pos2) {
 				X.log(position.toString());
-			}*/
+			}
 			b.initialPiecePlayerPosition(p1, mapperP1);
 			b.initialPiecePlayerPosition(p2, mapperP2);
 			b.toString();
 		} catch (InvalidBoardXCoordinate | InvalidBoardYCoordinate | PositionOccupiedException | InvalidBoardCoordinate e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 }

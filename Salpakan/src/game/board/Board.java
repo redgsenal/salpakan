@@ -6,14 +6,17 @@ import game.player.Player;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import pieces.Position;
 import pieces.TilePiece;
-import utils.Constant;
+import pieces.TilePosition;
 
 public class Board implements BoardActions {
-	private Map<Map<Position, TilePiece>, Player> tilePiecePlayerMap = new HashMap<Map<Position, TilePiece>, Player> ();
+	// holds the piece and corresponding position to which player it belongs to
+	private Map<TilePosition, Player> tilePiecePlayerMap = new HashMap<TilePosition, Player> ();
 	private Player p1;
 	private Player p2;
 
@@ -54,6 +57,10 @@ public class Board implements BoardActions {
 		}
 		return false;
 	}
+	
+	public Map<TilePosition, Player> getTilePiecePlayersMap() {
+		return tilePiecePlayerMap;
+	}
 
 	@Override
 	public void setMove() {
@@ -76,10 +83,34 @@ public class Board implements BoardActions {
 	}
 
 	@Override
-	public void initialPiecePlayerPosition(Player p, Map<Position, TilePiece> startingPositions) throws InvalidBoardCoordinate, PositionOccupiedException {
-		ArrayList<Position> pos = p.initialPiecePositions(startingPositions);
-		for (Position position : pos) {			
-		}
+	public void initialPiecePlayerPosition(Player p, ArrayList<TilePosition> tilemap) throws InvalidBoardCoordinate, PositionOccupiedException {
+		// just because its empty
+		if (tilemap.isEmpty())
+			return;
+
+		for (TilePosition tilePosition : tilemap) {
+			if (isPositionOccupied(tilePosition))
+				throw new PositionOccupiedException(tilePosition.getPosition());
+			tilePiecePlayerMap.put(tilePosition, p);
+		}		
+	}
+	
+	private boolean isPositionOccupied(TilePosition tilePosition){
+		return isPositionOccupied(tilePosition.getPosition());
+	}
+	
+	private boolean isPositionOccupied(Position p){
+		if (!tilePiecePlayerMap.isEmpty()){
+			Iterator items = tilePiecePlayerMap.entrySet().iterator();
+			while(items.hasNext()){
+				Map.Entry<TilePosition, Player> item = (Entry<TilePosition, Player>) items.next();
+				TilePosition mapitem = (TilePosition) item.getKey();
+				if (mapitem.getPosition().equals(p))
+					return true;
+			}
+			
+		}			
+		return false;
 	}
 	
 	@Override
