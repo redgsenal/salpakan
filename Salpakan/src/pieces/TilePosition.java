@@ -28,4 +28,9 @@ public class TilePosition {
 	public void setPosition(Position position) {
 		this.position = position;
 	}
+	
+	@Override
+	public String toString() {
+		return "(" + this.position.toString() + "|" + this.piece.toString() + ")";
+	}
 }
