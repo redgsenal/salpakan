@@ -208,4 +208,5 @@ public final class Constant {
 	public static final int INITIAL_BOTTOM_MIN_Y_LIMIT = 1;
 	public static final int INITIAL_TOP_MAX_Y_LIMIT = 8;
 	public static final int INITIAL_TOP_MIN_Y_LIMIT = 6;
+	public static final String GAME_TITLE = "SALPAKAN";
 }

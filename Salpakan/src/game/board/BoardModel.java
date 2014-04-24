@@ -17,7 +17,6 @@ import pieces.TilePiece;
 import pieces.TilePieceSet;
 import pieces.TilePosition;
 import utils.Constant;
-import utils.X;
 
 public class BoardModel implements BoardActions {
 	// holds the piece and corresponding position to which player it belongs to
@@ -195,7 +194,7 @@ public class BoardModel implements BoardActions {
 				if (mapitem.getPosition().equals(p))
 					return true;
 			}
-		}			
+		}
 		return false;
 	}
 	
