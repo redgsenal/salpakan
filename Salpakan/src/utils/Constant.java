@@ -209,4 +209,10 @@ public final class Constant {
 	public static final int INITIAL_TOP_MAX_Y_LIMIT = 8;
 	public static final int INITIAL_TOP_MIN_Y_LIMIT = 6;
 	public static final String GAME_TITLE = "SALPAKAN";
+	public static final int BOARD_MARGIN = 10;
+	public static final int BOARD_COMPONENT_WIDTH = 810;
+	public static final int BOARD_COMPONENT_HEIGHT = 680;
+	public static final int BOARD_LINE_WIDTH = 5;
+	public static final int PLAY_FRAME_WIDTH = 960;
+	public static final int PLAY_FRAME_HEIGHT = 725;
 }
