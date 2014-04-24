@@ -6,7 +6,7 @@ import java.util.HashMap;
 import pieces.Position;
 import pieces.TilePiece;
 import pieces.TilePosition;
-import game.board.Board;
+import game.board.BoardModel;
 import game.exceptions.InvalidBoardCoordinate;
 import game.exceptions.InvalidBoardXCoordinate;
 import game.exceptions.InvalidBoardYCoordinate;
@@ -25,7 +25,7 @@ public class Play {
 			//Player p1 = new Player("player1");
 			Player p2 = new Player("player2");
 			p2.setStartingPlayer(true);
-			Board b = new Board(p2);
+			BoardModel b = new BoardModel(p2);
 			//ArrayList<TilePosition> tilemap1 = new ArrayList<TilePosition>();
 			/*tilemap1.add(new TilePosition(new Position(3, 5), Constant.FLAG));
 			tilemap1.add(new TilePosition(new Position(7, 5), Constant.SPY));

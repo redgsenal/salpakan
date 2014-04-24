@@ -1,6 +1,6 @@
 package play;
 
-import game.board.Board;
+import game.board.BoardModel;
 import game.exceptions.InvalidBoardCoordinate;
 import game.exceptions.InvalidBoardXCoordinate;
 import game.exceptions.InvalidBoardYCoordinate;

@@ -19,21 +19,21 @@ import pieces.TilePosition;
 import utils.Constant;
 import utils.X;
 
-public class Board implements BoardActions {
+public class BoardModel implements BoardActions {
 	// holds the piece and corresponding position to which player it belongs to
 	private Map<TilePosition, Player> tilePiecePlayerMap = new HashMap<TilePosition, Player> ();
 	private Player p1;
 	private Player p2;
 
-	public Board() {
+	public BoardModel() {
 	}
 	
-	public Board(Player p) {
+	public BoardModel(Player p) {
 		this.p1 = p;
 		setStartingPlayer();
 	}
 
-	public Board(Player p1, Player p2) {
+	public BoardModel(Player p1, Player p2) {
 		this.p1 = p1;
 		this.p2 = p2;		
 		setStartingPlayer();
@@ -224,6 +224,19 @@ public class Board implements BoardActions {
 			}
 		}
 		return tilePieces;
+	}
+	
+	private Player getTurnPlayer(){
+		if (p1 != null && p2 != null)
+			return (p1.isTurn() ? p1 : p2);
+	
+		if (p1 != null)
+			return p1;
+		
+		if (p2 != null)
+			return p2;
+		
+		return null;
 	}
 	
 	@Override
