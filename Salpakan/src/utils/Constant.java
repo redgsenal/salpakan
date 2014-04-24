@@ -162,7 +162,7 @@ public final class Constant {
 	public static TilePiece SERGENT = new TilePiece("Sergent", SERGENT_VALUE, SERGENT_LESSER_RANKS);
 	public static TilePiece PRIVATE = new TilePiece("Private", PRIVATE_VALUE, PRIVATE_LESSER_RANKS);
 	public static TilePiece SPY = new TilePiece("Spy", SPY_VALUE, SPY_LESSER_RANKS);
-	
+
 	public static TilePieceSet FLAG_SET = new TilePieceSet(FLAG, 1);
 	public static TilePieceSet FIVE_STAR_GENERAL_SET = new TilePieceSet(FIVE_STAR_GENERAL, 1);
 	public static TilePieceSet FOUR_STAR_GENERAL_SET = new TilePieceSet(FOUR_STAR_GENERAL, 1);
@@ -178,7 +178,7 @@ public final class Constant {
 	public static TilePieceSet SERGENT_SET = new TilePieceSet(SERGENT, 1);
 	public static TilePieceSet PRIVATE_SET = new TilePieceSet(PRIVATE, 6);
 	public static TilePieceSet SPY_SET = new TilePieceSet(SPY, 2);
-	
+
 	public static ArrayList<TilePieceSet> TILE_PIECES = new ArrayList<TilePieceSet>(Arrays.asList(
 			FLAG_SET,
 			FIVE_STAR_GENERAL_SET,
@@ -197,9 +197,15 @@ public final class Constant {
 			SPY_SET
 		)
 	);
-	
+
 	//board
 	public static final int MAX_BOARD_X = 9;
 	public static final int MAX_BOARD_Y = 8;
+	public static final int MIN_BOARD_X = 1;
+	public static final int MIN_BOARD_Y = 1;
 	public static final int SQUARE_BOARD = MAX_BOARD_X * MAX_BOARD_Y;
+	public static final int INITIAL_BOTTOM_MAX_Y_LIMIT = 3;
+	public static final int INITIAL_BOTTOM_MIN_Y_LIMIT = 1;
+	public static final int INITIAL_TOP_MAX_Y_LIMIT = 8;
+	public static final int INITIAL_TOP_MIN_Y_LIMIT = 6;
 }

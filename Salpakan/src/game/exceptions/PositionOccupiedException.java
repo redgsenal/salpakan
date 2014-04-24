@@ -1,6 +1,7 @@
 package game.exceptions;
 
 import pieces.Position;
+import pieces.TilePosition;
 
 
 public class PositionOccupiedException extends BoardException {
@@ -11,5 +12,8 @@ public class PositionOccupiedException extends BoardException {
 	}
 	public PositionOccupiedException(Position p){
 		super(ERR_MSG + p.toString());
+	}
+	public PositionOccupiedException(TilePosition tp) {
+		super(ERR_MSG + tp);
 	}
 }
