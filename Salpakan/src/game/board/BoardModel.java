@@ -1,6 +1,7 @@
 package game.board;
 
 import game.exceptions.InvalidBoardCoordinate;
+import game.exceptions.InvalidInitialTilePiecePosition;
 import game.exceptions.InvalidPieceCountException;
 import game.exceptions.PositionOccupiedException;
 import game.player.Player;
@@ -17,20 +18,45 @@ import pieces.TilePiece;
 import pieces.TilePieceSet;
 import pieces.TilePosition;
 import utils.Constant;
-import utils.X;
 
-public class Board implements BoardActions {
+public class BoardModel implements BoardActions {
 	// holds the piece and corresponding position to which player it belongs to
 	private Map<TilePosition, Player> tilePiecePlayerMap = new HashMap<TilePosition, Player> ();
 	private Player p1;
 	private Player p2;
 
-	public Board() {
+	public BoardModel() {
+	}
+	
+	public BoardModel(Player p) {
+		this.p1 = p;
+		setStartingPlayer();
 	}
 
-	public Board(Player p1, Player p2) {
+	public BoardModel(Player p1, Player p2) {
 		this.p1 = p1;
-		this.p2 = p2;
+		this.p2 = p2;		
+		setStartingPlayer();
+	}
+
+	/**
+	 * Flip coin to start player
+	 */
+	private void setStartingPlayer() {
+		
+		// a better way to do this
+		if (p1 != null && p2 != null){			
+			p1.setStartingPlayer(true);
+			p2.setStartingPlayer(false);
+			return;
+		}
+		
+		if (p1 != null)
+			p1.setStartingPlayer(true);
+
+		if (p2 != null)
+			p2.setStartingPlayer(true);
+			
 	}
 
 	@Override
@@ -88,18 +114,63 @@ public class Board implements BoardActions {
 	}
 
 	@Override
+<<<<<<< HEAD:Salpakan/src/game/board/Board.java
 	public void initialPiecePlayerPosition(Player p, List<TilePosition> tilemap) throws InvalidBoardCoordinate, PositionOccupiedException, InvalidPieceCountException {
+=======
+	public void initialPiecePlayerPosition(Player p, ArrayList<TilePosition> tilemap) throws InvalidBoardCoordinate, PositionOccupiedException, InvalidPieceCountException, InvalidInitialTilePiecePosition {
+>>>>>>> 0c59116e94a272ffecaecf4cdf98b27f36aa3fb3:Salpakan/src/game/board/BoardModel.java
 		// just because its empty
 		if (tilemap.isEmpty())
 			return;
 		
-		for (TilePosition tilePosition : tilemap) {
-			if (isPositionOccupied(tilePosition.getPosition()))
-				throw new PositionOccupiedException(tilePosition.getPosition());
-			if (hasExceedPieceCount(p, tilePosition.getPiece()))
-				throw new InvalidPieceCountException(tilePosition.getPiece());
-			tilePiecePlayerMap.put(tilePosition, p);
+		Player player = getPlayerObject(p);
+		
+		for (TilePosition tp : tilemap) {
+			if (isInvalidInitialTilePiecePosition(player, tp))
+				throw new InvalidInitialTilePiecePosition(player, tp);
+			occupyPlayerTilePosition(player, tp);
 		}
+	}
+	
+	private Player getPlayerObject(Player p) {
+		if (p1.equals(p))
+			return p1;
+		
+		if (p2.equals(p))
+			return p2;
+		
+		this.p1 = p; 
+		setStartingPlayer();
+		return p;
+	}
+
+	private boolean isInvalidInitialTilePiecePosition(Player plyr, TilePosition tp) {
+		// the starting player will have limited Y from 1 to 3 (bottom of the board)
+		// opponent limited Y from 7 to 9 (top of the board)
+		int positionMaxYLimit = Constant.INITIAL_TOP_MAX_Y_LIMIT;
+		int positionMinYLimit = Constant.INITIAL_TOP_MIN_Y_LIMIT;
+		
+		if (plyr.isStartingPlayer()){
+			positionMaxYLimit = Constant.INITIAL_BOTTOM_MAX_Y_LIMIT;
+			positionMinYLimit = Constant.INITIAL_BOTTOM_MIN_Y_LIMIT;
+		}
+		
+		int y = tp.getPosition().getY();
+		return (y < positionMinYLimit || y > positionMaxYLimit);
+	}
+
+	private boolean isInvalidBoardCoordinate(Position pos){
+		return (((pos.getX() < Constant.MIN_BOARD_X) || (pos.getX() > Constant.MAX_BOARD_X)) || ((pos.getY() < Constant.MIN_BOARD_Y) || (pos.getY() > Constant.MAX_BOARD_Y))); 
+	}
+	
+	private void occupyPlayerTilePosition(Player p, TilePosition tp) throws PositionOccupiedException, InvalidPieceCountException, InvalidBoardCoordinate{
+		if (isPositionOccupied(tp.getPosition()))
+			throw new PositionOccupiedException(tp);
+		if (hasExceedPieceCount(p, tp.getPiece()))
+			throw new InvalidPieceCountException(tp.getPiece());
+		if (isInvalidBoardCoordinate(tp.getPosition()))
+			throw new InvalidBoardCoordinate();
+		tilePiecePlayerMap.put(tp, p);
 	}
 	
 	private boolean hasExceedPieceCount(Player player, TilePiece piece) {
@@ -128,7 +199,7 @@ public class Board implements BoardActions {
 				if (mapitem.getPosition().equals(p))
 					return true;
 			}
-		}			
+		}
 		return false;
 	}
 	
@@ -157,6 +228,19 @@ public class Board implements BoardActions {
 			}
 		}
 		return tilePieces;
+	}
+	
+	private Player getTurnPlayer(){
+		if (p1 != null && p2 != null)
+			return (p1.isTurn() ? p1 : p2);
+	
+		if (p1 != null)
+			return p1;
+		
+		if (p2 != null)
+			return p2;
+		
+		return null;
 	}
 	
 	@Override

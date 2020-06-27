@@ -15,6 +15,7 @@ public class Player implements PlayerActions {
 	private boolean isWinner = false;
 	private boolean isActive = false;
 	private boolean isTurn = false;
+	private boolean startingPlayer = false;
 	private static ArrayList<TilePiece> pieces = Utils.initializePieces();
 
 	public Player() {
@@ -91,6 +92,14 @@ public class Player implements PlayerActions {
 	@Override
 	public String toString() {
 		return "Player: " + this.name;
+	}
+
+	public boolean isStartingPlayer() {
+		return startingPlayer;
+	}
+
+	public void setStartingPlayer(boolean startingPlayer) {
+		this.startingPlayer = startingPlayer;
 	}
 	
 }
