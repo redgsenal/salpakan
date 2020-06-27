@@ -8,6 +8,7 @@ import game.player.Player;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -87,7 +88,7 @@ public class Board implements BoardActions {
 	}
 
 	@Override
-	public void initialPiecePlayerPosition(Player p, ArrayList<TilePosition> tilemap) throws InvalidBoardCoordinate, PositionOccupiedException, InvalidPieceCountException {
+	public void initialPiecePlayerPosition(Player p, List<TilePosition> tilemap) throws InvalidBoardCoordinate, PositionOccupiedException, InvalidPieceCountException {
 		// just because its empty
 		if (tilemap.isEmpty())
 			return;
@@ -171,5 +172,12 @@ public class Board implements BoardActions {
 	@Override
 	public void clearPositions() {
 		tilePiecePlayerMap = new HashMap<TilePosition, Player> ();
+	}
+
+	@Override
+	public void initialPiecePlayerPosition(Player p, List<TilePosition> startingPositions)
+			throws InvalidBoardCoordinate, PositionOccupiedException, InvalidPieceCountException {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,10 +1,11 @@
 package game.board;
 
-import java.util.ArrayList;
-
 import pieces.Position;
 import pieces.TilePiece;
 import pieces.TilePosition;
+
+import java.util.List;
+
 import game.exceptions.InvalidBoardCoordinate;
 import game.exceptions.InvalidPieceCountException;
 import game.exceptions.PositionOccupiedException;
@@ -20,7 +21,7 @@ public interface BoardActions {
 	public void setMove();
 	public void removePiece(Player player, TilePiece piece);
 	public void removePiece(Position position);
-	public void initialPiecePlayerPosition(Player p, ArrayList<TilePosition> startingPositions) throws InvalidBoardCoordinate, PositionOccupiedException, InvalidPieceCountException;
+	public void initialPiecePlayerPosition(Player p, List<TilePosition> startingPositions) throws InvalidBoardCoordinate, PositionOccupiedException, InvalidPieceCountException;
 	void setTilePiecePosition(TilePiece tilePiece, int x, int y) throws InvalidBoardCoordinate, PositionOccupiedException;
 	
 }
